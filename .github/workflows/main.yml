@@ -34,11 +34,11 @@ jobs:
         
       - name: Tag Docker image
         run: |  
-          docker tag my-lambda-function:latest ${{ env.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/lambda-test-python:latest
+          docker tag my-lambda-function:latest ${{ env.AWS_ACCOUNT_ID }}.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com/lambda-test-python:latest
         
       - name: Push Docker image to ECR
         run: |
-          docker push 209479286356.dkr.ecr.us-east-1.amazonaws.com/lambda-test-python:latest
+          docker push ${{ env.AWS_ACCOUNT_ID }}.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com/lambda-test-python:latest
 
       - name: Update Lambda function
         run: |
