@@ -35,7 +35,7 @@ jobs:
         
       - name: Push Docker image to ECR
         run: |
-          docker push my-lambda-function:latest 209479286356.dkr.ecr.us-east-1.amazonaws.com/lambda-test-python:latest
+          docker push 209479286356.dkr.ecr.us-east-1.amazonaws.com/lambda-test-python:latest
 
       - name: Update Lambda function
         run: |
