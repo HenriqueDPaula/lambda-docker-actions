@@ -1,9 +1,9 @@
-name: Deploy Lambda Function 
+name: Deploy Lambda Function
 
-on: 
+on:
   push:
     branches:
-      - master
+      - main  # Ou 'master' se for o caso
 
 jobs:
   build-and-deploy:
@@ -39,12 +39,10 @@ jobs:
 
       - name: Update Lambda function
         run: |
-          aws lambda update-function-code
-            --function-name lambda-test-python-docker
+          aws lambda update-function-code \
+            --function-name lambda-test-python-docker \
             --image-uri ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/lambda-test-python:latest
-
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: ${{ secrets.AWS_REGION }}
-          
