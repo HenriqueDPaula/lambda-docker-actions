@@ -3,7 +3,7 @@ name: Deploy Lambda Function
 on:
   push:
     branches:
-      - master  # Ou 'master' se for o caso
+      - master  # Ou 'main'
 
 jobs:
   build-and-deploy:
