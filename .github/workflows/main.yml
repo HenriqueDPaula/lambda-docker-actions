@@ -31,7 +31,7 @@ jobs:
           docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/lambda-test-python:latest
 
       - name: Update Lambda function
-        uses: aws-actions/aws-cli-action@v2
+        uses: aws-actions/aws-cli@v2
         with:
           aws-cli-version: '2'
           args: >
