@@ -30,8 +30,8 @@ jobs:
           docker build -t my-lambda-function .
         
       - name: Tag Docker image
-        run: |
-          docker tag my-lambda-function:latest 209479286356.dkr.ecr.us-east-1.amazonaws.com/lambda-test-python:latest  
+        run: |  
+          docker tag my-lambda-function:latest ${{ env.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/lambda-test-python:latest
         
       - name: Push Docker image to ECR
         run: |
