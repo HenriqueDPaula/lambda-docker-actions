@@ -8,10 +8,10 @@ nome_tabela = "eventos_lambda"
 dynamo = boto3.resource('dynamodb').Table(nome_tabela)
 
 def create(request):
-    return dynamo.put(json.dumps(request))
+    return dynamo.put_item(request)
 
 def read(request):
-    return dynamo.get_item(request['id'])
+    return dynamo.scan()
 
 def echo(request):
     return request
