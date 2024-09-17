@@ -14,7 +14,8 @@ def create(request):
 
     evento = {
         'id_evento': id,
-        'corpo': json.dumps(request)
+        'corpo': json.dumps(request),
+        'momoi': '<3'
     }
 
     logger.info(f'inserindo registro na tabela `{nome_tabela}` com id: {id}')
