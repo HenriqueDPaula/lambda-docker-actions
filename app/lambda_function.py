@@ -10,11 +10,14 @@ dynamo = boto3.resource('dynamodb').Table(nome_tabela)
 
 def create(request):
 
+    id = str(uuid.uuid4)
+
     evento = {
-        'id_evento': str(uuid.uuid4),
+        'id_evento': id,
         'corpo': json.dumps(request)
     }
 
+    logger.info('inserindo registro na tabela `{nome_tabela}` com id: {id}')
     return dynamo.put_item(Item=evento)
 
 def read(request):
