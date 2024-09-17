@@ -10,7 +10,7 @@ dynamo = boto3.resource('dynamodb').Table(nome_tabela)
 
 def create(request):
 
-    id = str(uuid.uuid4)
+    id = str(uuid.uuid4())
 
     evento = {
         'id_evento': id,
