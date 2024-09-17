@@ -1,14 +1,21 @@
 import json
 import boto3
+import uuid 
 from lambda_function_log import Logger
 
 logger = Logger()
 
-nome_tabela = "eventos_lambda"
+nome_tabela = "eventos_lambda_teste"
 dynamo = boto3.resource('dynamodb').Table(nome_tabela)
 
 def create(request):
-    return dynamo.put_item(Item=request)
+
+    evento = {
+        'id_evento': str(uuid.uuid4),
+        'corpo': json.dumps(request)
+    }
+
+    return dynamo.put_item(Item=evento)
 
 def read(request):
     return dynamo.scan()
